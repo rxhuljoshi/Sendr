@@ -6,10 +6,13 @@ Main Features
 1. Speech Recognition
 2. Email Database
 3. Email Fetching from Name
-4. Group Creation
+4. Sending Email
+5. Writing Drafts
+
 
 Sec Features
-1. 
-2. 
+1. Group Creation
+2. Using Previosly saved Drafts to send emails
+3. 
 
 
