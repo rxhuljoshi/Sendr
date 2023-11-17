@@ -210,7 +210,57 @@ def main():
                 if choice == "yes":
                     print("Email not sent.")
                     speak("Email not sent.")
-                        
+                else:
+                    print("Do you want to save the email as a draft?")
+                    speak("Do you want to save the email as a draft?")
+                    choice = listen()
+                    if choice == "yes":
+                        # Save the email as a draft
+                        with open("draft.txt", "w") as file:
+                            file.write(f"To: {to}\n")
+                            file.write(f"Subject: {subject}\n")
+                            file.write(f"Body: {body}\n")
+                        print("Email saved as draft!")
+                        speak("Email saved as draft!")
+        
+        elif "send email" in command:
+            drafts = os.listdir()
+            draft_files = [file for file in drafts if file.endswith(".txt")]
+            if len(draft_files) == 0:
+                print("No drafts found.")
+                speak("No drafts found.")
+            else:
+                print("Here are the available drafts:")
+                speak("Here are the available drafts:")
+                for i, file in enumerate(draft_files):
+                    print(f"{i+1}. {file}")
+                print("Please enter the number of the draft you want to send:")
+                speak("Please enter the number of the draft you want to send:")
+                choice = listen()
+                num = name_number(choice)
+                if num is None or num < 1 or num > len(draft_files):
+                    print("Invalid number.")
+                    speak("Invalid number.")
+                else:
+                    draft_file = draft_files[num-1]
+                    with open(draft_file, "r") as file:
+                        draft_content = file.read()
+                    print("Do you want to send this draft?")
+                    speak("Do you want to send this draft?")
+                    choice = listen()
+                    if choice == "yes":
+                        # Extract the email details from the draft content
+                        lines = draft_content.split("\n")
+                        to = lines[0].replace("To: ", "")
+                        subject = lines[1].replace("Subject: ", "")
+                        body = lines[2].replace("Body: ", "")
+                        send_email(to, subject, body)
+                        print("Email sent successfully!")
+                        speak("Email sent successfully!")
+                    else:
+                        print("Email not sent.")
+                        speak("Email not sent.")
+        
         elif "add contact" in command:
             print("What is the name of the contact?")
             speak("What is the name of the contact?")
