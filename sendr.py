@@ -91,7 +91,7 @@ def send_email(to, subject, body):
 
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(os.environ.get('rjdeep0301@gmail.com'), os.environ.get('Rxhul@321'))
+        server.login(os.environ.get('rjdeep0301@gmail.com'), os.environ.get('Rjdeep@0301')) #let's just write this as my password for now
         server.send_message(msg)
 
 def add_contact(name, email):
@@ -153,7 +153,7 @@ def main():
     print("Here are the available commands:")
     speak("Here are the available commands:")
     print('''1. Write email
-2. Send email
+2. Send email (Use Drafts)
 3. Add contact
 4. Delete contact
 5. Remove all contacts
