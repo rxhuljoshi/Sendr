@@ -1,0 +1,12 @@
+Problem Statement:
+The Sendr project aims to create a virtual email bot that allows users to send emails, manage contacts, and save drafts. The goal is to provide a convenient and efficient way for users to interact with their email accounts using voice commands.
+
+Methodology:
+The project utilizes various technologies and libraries to achieve its objectives. It uses the pyttsx3 library for text-to-speech functionality, the SpeechRecognition library for speech recognition, and the smtplib library for sending emails. It also makes use of the sqlite3 library for managing contacts and drafts, and the keyboard library for capturing keyboard events.
+
+The main functionality of the project is implemented through a series of functions. The "name_number" function converts number names to their corresponding numerical values. The "speak" function uses text-to-speech to speak the given text. The "listen" function uses speech recognition to listen for user commands. The "send_email" function sends an email using the provided details. The "add_contact" function adds a contact to the database. The "delete_contact" function deletes a contact from the database. The "remove_all_contacts" function removes all contacts from the database. The "get_email" function retrieves the email address of a contact. The "show_contacts" function displays all contacts. The "exit" function exits the program. The "greet" function greets the user and asks for their name. The "main" function is the main entry point of the program and handles user commands.
+
+Key Findings:
+The Sendr project successfully implements the desired functionality of sending emails, managing contacts, and saving drafts. Users can interact with the program using voice commands, making it convenient and hands-free. The program also provides error handling for invalid commands and input. The use of a database for storing contacts and drafts allows for easy management and retrieval of information.
+
+Overall, the Sendr project provides a user-friendly and efficient solution for email management, making it a valuable tool for individuals who want to streamline their email communication process.
