@@ -5,7 +5,6 @@ import pyttsx3
 import sqlite3
 import smtplib, ssl
 from email.message import EmailMessage
-import getpass
 import os
 import sys
 import keyboard
