@@ -81,14 +81,14 @@ def listen():
 
 def send_email(to, subject, body):
     msg = EmailMessage()
-    msg['From'] = os.environ.get('rjdeep0301@gmail.com')
+    msg['From'] = os.environ.get('joshi0309@outlook.com')
     msg['To'] = to
     msg['Subject'] = subject
     msg.set_content(body)
 
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(os.environ.get('rjdeep0301@gmail.com'), os.environ.get('Rjdeep@0301')) #let's just write this as my password for now
+    with smtplib.SMTP_SSL("smtp.outlook.com", 587, context=context) as server:
+        server.login(os.environ.get('joshi0309@outlook.com'), os.environ.get('bgU9y-8?$k4@ckj')) #let's just write this as my password for now
         server.send_message(msg)
 
 def add_contact(name, email):
@@ -181,11 +181,13 @@ def main():
                 speak("Email address not found. Please enter the email address:")
                 email = input()
                 add_contact(to, email)
+                print("New Contact added successfully!")
+                speak("New Contact added successfully!")
             print("What is the subject of the email?")
             speak("What is the subject of the email?")
             subject = listen()
             choice = input("Do you want to manually enter the body of the email?")
-            if choice == "yes":
+            if choice == "yes" or "Yes" or "YES":
                 print("Please enter the body of the email:")
                 speak("Please enter the body of the email:")
                 body = input()
