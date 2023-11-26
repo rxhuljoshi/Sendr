@@ -69,8 +69,6 @@ def listen():
             audio = r.listen(source, phrase_time_limit=5)
         try:
             text = r.recognize_google(audio)
-            print(f"You said: {text}")
-            speak(f"You said: {text}")
             return text
         except sr.UnknownValueError:
             print("Sorry, I could not understand your command.")
@@ -170,7 +168,9 @@ def main():
     while True:
         command = listen().lower()
 
-        if "write email" in command:
+        if "write email" in command or "right email" in command or "white email" in command:
+            print("You said: Write Email")
+            speak("You said: Write Email")
             print("To whom do you want to send the email?")
             speak("To whom do you want to send the email?")
             to = listen()
@@ -198,7 +198,7 @@ def main():
             print("Do you want to send the email?")
             speak("Do you want to send the email?")
             choice = listen()
-            if choice == "yes":
+            if choice == "yes" or "Yes" or "YES":
                 send_email(email, subject, body)
                 print("Email sent successfully!")
                 speak("Email sent successfully!")
@@ -206,14 +206,14 @@ def main():
                 print("Are you sure you don't want to send the email?")
                 speak("Are you sure you don't want to send the email?")
                 choice = listen()
-                if choice == "yes":
+                if choice == "yes" or "Yes" or "YES":
                     print("Email not sent.")
                     speak("Email not sent.")
                 else:
                     print("Do you want to save the email as a draft?")
                     speak("Do you want to save the email as a draft?")
                     choice = listen()
-                    if choice == "yes":
+                    if choice == "yes" or "Yes" or "YES":
                         # Save the email as a draft
                         with open("draft.txt", "w") as file:
                             file.write(f"To: {to}\n")
@@ -223,6 +223,8 @@ def main():
                         speak("Email saved as draft!")
         
         elif "send email" in command:
+            print("You said: Send Email")
+            speak("You said: Send Email")
             drafts = os.listdir()
             draft_files = [file for file in drafts if file.endswith(".txt")]
             if len(draft_files) == 0:
@@ -261,6 +263,8 @@ def main():
                         speak("Email not sent.")
         
         elif "add contact" in command:
+            print("You said: Add Contact")
+            speak("You said: Add Contact")
             print("What is the name of the contact?")
             speak("What is the name of the contact?")
             name = listen()
@@ -270,6 +274,8 @@ def main():
             add_contact(name, email)
         
         elif "delete contact" in command:
+            print("You said: Delete Contact")
+            speak("You said: Delete Contact")
             show_contacts()
             print("Enter the number of the contact you want to delete:")
             speak("Enter the number of the contact you want to delete:")
@@ -292,14 +298,22 @@ def main():
                     speak(f"{name} Deleted successfully!")
         
         elif "remove all contacts" in command:
+            print("You said: Remove all contacts")
+            speak("You said: Remove all contacts")
             remove_all_contacts()
             print("All contacts removed successfully!")
             speak("All contacts removed successfully!")        
         
         elif "show contacts" in command:
+            print("You said: Show Contacts")
+            speak("You said: Show Contacts")
+            print("Here are your contacts:")
+            speak("Here are your contacts:")
             show_contacts()
         
         elif "exit" in command:
+            print("You said: Exit")
+            speak("You said: Exit")
             exit()
         
         else:
